@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box form-box">
+            <header>Sign Up</header>
+            <form >
+                <div class="field input">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" minlength="5" required>
+                </div>
+
+                <div class="field input">
+                    <label >Email</label>
+                    <input type="email"  id="email" required>
+                </div>
+
+                <div class="field input">
+                    <label>Password</label>
+                    <input type="password" id="password" minlength="8" required>
+                </div>
+
+                <div class="links">
+                    Already a member? <a href="index.html" style="text-decoration: none;">Sign In</a>
+                </div>
+                <button id="btnsign" class="btn">Registar</button>
+            </form>
+             
+        </div>
+      </div> 
+
+
+      <script>
+
+let inp = document.getElementById("username")
+let ema = document.getElementById("email")
+let pas = document.getElementById("password")
+let btnn = document.getElementById("btnsign")
+
+
+btnn.addEventListener("click", function () {
+    let name = inp.value;
+    let email = ema.value;
+    let password = pas.value;
+    fetch("https://655205705c69a77903296f32.mockapi.io/HomeWork", {
+        method: 'POST',
+        body: JSON.stringify({
+            name,
+            email,
+            password,
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then((response) => response.json())
+        .then((json) => 
+        console.log(json));
+        
+})
+
+      </script>
+</body>
+</html>
+
+

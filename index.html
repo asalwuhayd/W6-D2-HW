@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+    <div class="container">
+        <div class="box form-box">
+            <header>Login</header>
+            <form >
+                <div class="field input">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+
+                <div class="field input">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required minlength="8">
+                </div>
+                
+                <div class="links">
+                    Don't have account? <a href="sginup.html" style="text-decoration: none;">Sign Up</a>
+                </div>
+            </form>
+            <button id="btnlog" class="btn">Log In</button>
+
+            <p id="text" style="margin-top: 32px;"></p>
+        </div>
+      </div>
+
+    <script>
+
+let btn = document.getElementById("btnlog")
+let ema = document.getElementById("email")
+let pas = document.getElementById("password")
+let massage = document.getElementById("text")
+btn.addEventListener("click", function () {
+   let aemail = ema.value;
+   let apassword = pas.value;
+    let myreq = new XMLHttpRequest();
+    myreq.open("Get","https://655205705c69a77903296f32.mockapi.io/HomeWork");
+    myreq.send();
+    myreq.onreadystatechange= function () {
+     if (this.readyState === 4 && this.status === 200) {
+       
+        let data = JSON.parse(this.responseText);
+        
+        for (let i = 0; i < data.length; i++) {
+            if (aemail === data[i].email && apassword === data[i].password) {
+                window.location.href ='https://asalwuhayd.github.io/W6-D2-Lab1/';
+          
+            } else {
+                massage.innerText="Sorry Not Fund, If you don’t have account please click Sign UP"
+            }
+            
+          }
+     }
+    
+        
+    } 
+})
+
+
+    </script>
+</body>
+</html>
