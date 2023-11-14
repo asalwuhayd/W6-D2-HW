@@ -53,6 +53,9 @@ btn.addEventListener("click", function () {
             if (aemail === data[i].email && apassword === data[i].password) {
                 window.location.href ='https://asalwuhayd.github.io/W6-D2-Lab1/';
           
+            } else if (aemail === "" && apassword === "") {
+                
+                massage.innerText="Sorry Not Fund, If you don’t have account please click Sign UP"
             } else {
                 massage.innerText="Sorry Not Fund, If you don’t have account please click Sign UP"
             }
